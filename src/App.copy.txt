@@ -1,0 +1,85 @@
+// import React, {useState} from 'react';
+// import logo from './logo.svg';
+// import './App.css';
+// import {ButtonWithInnerEvent, Profile, ShoppingList} from "./render";
+// import {StateButton} from "./State.React";
+//
+//
+// function App() {
+//     //变量在返回之前
+//     function AboutPage() {
+//         return (
+//             <>
+//                 <h1>About</h1>
+//                 <p>Hello there.<br />How do you do?</p>
+//             </>
+//         );
+//     }
+//
+//     function PropState() {
+//         const [count, setCount] = useState(0);
+//
+//         function handleClick() {
+//             setCount(count + 1);
+//         }
+//
+//         class Buffer extends React.Component<{ count: any, onClick: any }> {
+//             render() {
+//                 let {count, onClick} = this.props;
+//                 return (
+//                     <button onClick={onClick}>
+//                         Clicked {count} times
+//                     </button>
+//                 );
+//             }
+//         }
+//
+//         return (
+//             <div>
+//                 <h3>Counters that update together</h3>
+//                 <Buffer count={count} onClick={handleClick} />
+//                 <Buffer count={count} onClick={handleClick} />
+//             </div>
+//         );
+//     }
+//     const products = [
+//         { title: 'Cabbage', id: 1 },
+//         { title: 'Garlic', id: 2 },
+//         { title: 'Apple', id: 3 },
+//     ];
+//     const listItem = products.map(item=>{
+//         <li key={item.id}>
+//             {item.title}
+//         </li>
+//     })
+//     return (
+//         <div className="App">
+//             <header className="App-header">
+//               <img src={logo} className="App-logo" alt="logo" />
+//               <div>
+//                 <h1>Welcome to my app</h1>
+//               </div>
+//             </header>
+//               <div style={{
+//                   alignItems: "center"
+//               }}>
+//                   <div style={
+//                       {
+//                           justifyContent:"center",
+//                           display:"flex",
+//                           flexDirection:"inherit"
+//                       }
+//                   }>
+//                       <AboutPage/>
+//                       <ButtonWithInnerEvent/>
+//                       <Profile/>
+//                       <ShoppingList/>
+//                   </div>
+//                   <StateButton/>
+//                   <PropState/>
+//               </div>
+//         </div>
+//     );
+// }
+//
+// export default App;
