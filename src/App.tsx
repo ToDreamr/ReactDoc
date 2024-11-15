@@ -1,23 +1,28 @@
 import './App.css';
 import Logo from "./export/export.default";
-import {BoxWith2Img, ButtonWithAlert} from "./export/export.named";
+import UseTheComponentsAbove from "./props-transfer/props.learn";
+import {TicGame} from "./Tic-tac-toe/My.Tic";
 
 
 function App() {
-    return (
-        <div style={{
-            alignItems:"center",
-            justifyContent:"center"
-        }}>
-            <header className="App-header">
-                <Logo/>
-            </header>
-            <div style={{display:"flex",justifyContent:"space-around"}}>
-                < BoxWith2Img/>
-                {/*<ButtonWithAlert message="nihao"/>*/}
-            </div>
-        </div>
-    )
+    // return (
+    //     <div style={{
+    //         alignItems:"center",
+    //         justifyContent:"center"
+    //     }}>
+    //         <header className="App-header">
+    //             <Logo/>
+    //         </header>
+    //         <UseTheComponentsAbove/>
+    //     </div>
+    // )
+    return(
+        <>
+            <TicGame/>
+        </>
+    );
 }
 
 export default App;
+
+
