@@ -6,7 +6,6 @@ import { JSX } from "react/jsx-runtime";
 
 //在jsx中，子组件传值的时候需要继承自对象组件。
 class Avatar extends Component<{ person: any, size: any }> {
-    src="jfdsjfdsl"
     render() {
         let {person, size} = this.props;
         return (
@@ -38,6 +37,8 @@ class Star extends Component<{ props: any }> {
         );
     }
 }
+
+
 
 /// <summary>
 /// </summary>
@@ -181,8 +182,25 @@ class Gallery extends Component<{person:any,size:any}>{
             </div>
         );
     }
+}
 
-
+//学习在jsx中参数传递的处理逻辑
+export function ParamLearn(){
+    const str = "HELP ME!!!"
+    let css  = {
+        width : "30px",
+        color : "red"
+    }
+    const person = {
+        name: 'Lin Lanying',
+        imageId: '1bX5QH6'
+       };
+    return (
+        <>
+         <h1>{str}</h1>
+         <h1 style={{color:css.color}}><img src={getImageUrl(person)} alt={str}/></h1>
+        </>
+    )
 }
 export default function UseTheComponentsAbove(){
    return (
@@ -204,6 +222,7 @@ export default function UseTheComponentsAbove(){
                        imageId: '1bX5QH6'
                    }}
          />
+         <ParamLearn/>
      </>
    );
 }

@@ -9,11 +9,75 @@ class Square extends Component<{ value: any ,onClick:any}> {
         </button>;
     }
 }
-export class Board extends Component<{squares:any,xIsNext:any,onPlay:any}>{
+
+//使用函数组件进行改写
+export function BoardFunc({squares, xIsNext, onPlay}: {squares:any, xIsNext:any, onPlay:any}) {
+    function handleClick(i: number) {
+        const nextSquares = squares.slice();
+        if (predicateWinner(squares) || squares[i]) {
+            return;
+        }
+        if (xIsNext) {
+            nextSquares[i] = 'X';
+        } else {
+            nextSquares[i] = 'O';
+        }
+        onPlay(nextSquares);
+    }
+    const winner = predicateWinner(squares);
+    let status;
+    if (winner) {
+        status = 'Winner: ' + winner;
+    } else {
+        status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+    }
+    // 函数内部可以直接使用解构出来的square、xIsNext、onPlay变量了
+    return (
+        <div style={{position: "fixed", justifyContent: "center", alignItems: "flex-end"}}>
+            <div className="status">{status}</div>
+            <div className="board-row">
+                <Square value={squares[0]} onClick={() => {
+                    handleClick(0)
+                }}/>
+                <Square value={squares[1]} onClick={() => {
+                    handleClick(1)
+                }}/>
+                <Square value={squares[2]} onClick={() => {
+                    handleClick(2)
+                }}/>
+            </div>
+            <div className="board-row">
+                <Square value={squares[3]} onClick={() => {
+                    handleClick(3)
+                }}/>
+                <Square value={squares[4]} onClick={() => {
+                    handleClick(4)
+                }}/>
+                <Square value={squares[5]} onClick={() => {
+                    handleClick(5)
+                }}/>
+            </div>
+            <div className="board-row">
+                <Square value={squares[6]} onClick={() => {
+                    handleClick(6)
+                }}/>
+                <Square value={squares[7]} onClick={() => {
+                    handleClick(7)
+                }}/>
+                <Square value={squares[8]} onClick={() => {
+                    handleClick(8)
+                }}/>
+            </div>
+        </div>
+    )
+}
+
+export class Board extends Component<{ squares: any, xIsNext: any, onPlay: any }> {
 
     render() {
 
-        let {squares,xIsNext,onPlay} = this.props;
+        let {squares, xIsNext, onPlay} = this.props;
+
         function handleClick(i: number) {
             const nextSquares = squares.slice();
             if (predicateWinner(squares) || squares[i]) {
@@ -26,6 +90,7 @@ export class Board extends Component<{squares:any,xIsNext:any,onPlay:any}>{
             }
             onPlay(nextSquares);
         }
+
         const winner = predicateWinner(squares);
         let status;
         if (winner) {
@@ -34,10 +99,12 @@ export class Board extends Component<{squares:any,xIsNext:any,onPlay:any}>{
             status = 'Next player: ' + (xIsNext ? 'X' : 'O');
         }
         return <>
-            <div style={{position:"fixed",justifyContent:"center",alignItems:"flex-end"}}>
+            <div style={{position: "fixed", justifyContent: "center", alignItems: "flex-end"}}>
                 <div className="status">{status}</div>
                 <div className="board-row">
-                    <Square value={squares[0]} onClick={()=>{handleClick(0)}}/>
+                    <Square value={squares[0]} onClick={() => {
+                        handleClick(0)
+                    }}/>
                     <Square value={squares[1]} onClick={()=>{handleClick(1)}}/>
                     <Square value={squares[2]} onClick={()=>{handleClick(2)}}/>
                 </div>
