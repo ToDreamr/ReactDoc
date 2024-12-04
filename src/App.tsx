@@ -2,6 +2,7 @@ import "./App.css";
 import Logo from "./export/export.default";
 import UseTheComponentsAbove from "./props-transfer/props.learn";
 import { Father, MultiItem, MultiReact } from "./render/render.item";
+import UseAllState from "./hook/state/state.learn";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <MultiReact param1={"World"} param2={"Your Name"} />
       <MultiItem />
       <UseTheComponentsAbove />
+      <UseAllState />
     </div>
   );
 }

@@ -1,16 +1,17 @@
-// @ts-ignore
-//React 组件使用 props 来互相通信。每个父组件都可以提供 props 给它的子组件，从而将一些信息传递给它
+/**
+ * React 组件使用 props 来互相通信。每个父组件都可以提供 props 给它的子组件，从而将一些信息传递给它
+ */
 import { getImageUrl } from "../utils/generalUtils";
 import { Component } from "react";
 import { JSX } from "react/jsx-runtime";
-
+import "./props.css";
 //在jsx中，子组件传值的时候需要继承自对象组件。
 class Avatar extends Component<{ person: any; size: any }> {
   render() {
     let { person, size } = this.props;
     return (
       <img
-        className="avatar"
+        className="props-avatar"
         src={getImageUrl(person)}
         alt={person.name}
         width={size}
@@ -28,7 +29,7 @@ class Star extends Component<{ props: any }> {
     let size = props.size;
     return (
       <img
-        className="avatar"
+        className="props-avatar"
         src={getImageUrl(person)}
         alt={person.name}
         width={size}
@@ -87,6 +88,16 @@ export function Profile() {
 }
 
 //一次性传递所有的属性
+/** Example
+ *      <Disposable
+ *         person={{
+ *           name: "Lin LanYin",
+ *           imageId: "1bX5QH6",
+ *         }}
+ *         size={50}
+ *       />
+ * @param props
+ */
 export function Disposable(
   props: JSX.IntrinsicAttributes &
     JSX.IntrinsicClassAttributes<Avatar> &
@@ -101,13 +112,14 @@ export function Disposable(
 
 class Card extends Component<{ children: any }> {
   render() {
-    let children = this.props.children;
-    return <div className="card">{children}</div>;
+    let distribution = this.props;
+    console.log(distribution.children);
+    return <div className="card">{distribution.children.name}</div>;
   }
 }
 export function CardProfile() {
   return (
-    <Card>
+    <>
       <Avatar
         size={100}
         person={{
@@ -115,20 +127,17 @@ export function CardProfile() {
           imageId: "YfeOqp2",
         }}
       />
-    </Card>
+      <Card children={{ name: "Katsuko Saruhashi", imageId: "YfeOqp2" }} />
+    </>
   );
 }
 
 //如何使props随着时间进行改变
-// class Clock extends Component<{color:any},{time:any}> {
-//     render() {
-//         return (
-//             <>
-//
-//             </>
-//         )
-//     }
-// }
+class Clock extends Component<{ color: any }, { time: any }> {
+  render() {
+    return <></>;
+  }
+}
 class Gallery extends Component<{ person: any; size: any }> {
   render() {
     let { person, size } = this.props;
@@ -138,7 +147,7 @@ class Gallery extends Component<{ person: any; size: any }> {
         <section className="profile">
           <h2>Maria Skłodowska-Curie</h2>
           <img
-            className="avatar"
+            className="props-avatar"
             src={getImageUrl(person)}
             alt="Maria Skłodowska-Curie"
             width={size}
@@ -163,7 +172,7 @@ class Gallery extends Component<{ person: any; size: any }> {
         <section className="profile">
           <h2>Katsuko Saruhashi</h2>
           <img
-            className="avatar"
+            className="props-avatar"
             src={getImageUrl(person)}
             alt="Katsuko Saruhashi"
             width={70}
@@ -202,7 +211,6 @@ export function ParamLearn() {
   };
   return (
     <>
-      <h1>{str}</h1>
       <h1 style={{ color: css.color }}>
         <img src={getImageUrl(person)} alt={str} />
       </h1>
@@ -213,22 +221,14 @@ export default function UseTheComponentsAbove() {
   return (
     <>
       <Profile />
-      <Disposable
-        person={{
-          name: "Lin LanYin",
-          imageId: "1bX5QH6",
-        }}
-        size={50}
-      />
       <CardProfile />
       <Gallery
-        size={50}
+        size={70}
         person={{
           name: "Lin LanYin",
           imageId: "1bX5QH6",
         }}
       />
-      <ParamLearn />
     </>
   );
 }

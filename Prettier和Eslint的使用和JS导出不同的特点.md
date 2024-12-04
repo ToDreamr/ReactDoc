@@ -45,7 +45,7 @@ Lint是作为检查代码中可能存在的错误和违规写法而存在的，�
 下载：
 
 ```bash
-npm i eslint prettier -g 
+npm i eslint prettier -g
 ```
 
 新建文件：
@@ -64,7 +64,6 @@ module.exports = {
     "prefer-const": "error",
   },
 };
-
 ```
 
 ### JS导入导出的差异：
@@ -75,11 +74,11 @@ module.exports = {
 
 ```js
 export default [
-    {
-        rules: {
-            semi: "error",
-            "prefer-const": "error"
-        }
-    }
+  {
+    rules: {
+      semi: "error",
+      "prefer-const": "error",
+    },
+  },
 ];
 ```
