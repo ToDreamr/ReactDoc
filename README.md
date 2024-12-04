@@ -4,6 +4,5 @@
 
 Some conception of React neighborhood
 
-React Native: A close framework used for quickly make up a mobile 
+React Native: A close framework used for quickly make up a mobile
 application, similar to flutter.
-

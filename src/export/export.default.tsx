@@ -1,13 +1,13 @@
 //一个文件里面有且仅有一个默认导出，但是可以 允许有多个具名导出
-import logo from '../logo.svg';
+import logo from "../logo.svg";
 
 //具名导出，不使用 default 关键字
-export default function LogoComponent(){
-    return (
-        <>
-            <img src={logo} className="App-logo" alt="logo" />
-        </>
-    );
+export default function LogoComponent() {
+  return (
+    <>
+      <img src={logo} className="App-logo" alt="logo" />
+    </>
+  );
 }
 
 // 组件的导出方式决定了其导入方式。当你用默认导入的方式，导入具名导出的组件时，就会报错。

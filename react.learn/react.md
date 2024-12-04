@@ -8,9 +8,7 @@ React is constructed by components,which can so small to a part of any UI of pag
 
 ```tsx
 function MyButton() {
-    return (
-        <button>I'm a button</button>
-    );
+  return <button>I'm a button</button>;
 }
 export default function MyApp() {
   return (
@@ -37,20 +35,15 @@ React doesn't stipulate what you need to do for including a css file,but the bes
 You need to use '{}' to render you data ,in jsx file ,when the compile machine read the lebel of {},it will read the param of which and render it on the screen.
 
 ```js
-return (
-  <img
-    className="avatar"
-    src={user.imageUrl}
-  />
-);
+return <img className="avatar" src={user.imageUrl} />;
 ```
 
-You could make a more complex calculation in this usage,with the example  below:
+You could make a more complex calculation in this usage,with the example below:
 
 ```js
 const user = {
-  name: 'Hedy Lamarr',
-  imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
+  name: "Hedy Lamarr",
+  imageUrl: "https://i.imgur.com/yXOvdOSs.jpg",
   imageSize: 90,
 };
 
@@ -61,23 +54,22 @@ export default function Profile() {
       <img
         className="avatar"
         src={user.imageUrl}
-        alt={'Photo of ' + user.name}
+        alt={"Photo of " + user.name}
         style={{
           width: user.imageSize,
-          height: user.imageSize
+          height: user.imageSize,
         }}
       />
     </>
   );
 }
-
 ```
 
 In the case of above,**style={{}}** is not a special grammar,but a normal object of style wrapped by the outside bracket.You can use this when you wanna add an extra style of a component.
 
 ## Conditional Rendering
 
-Just use JavaScript , the **if else** could help you render components conditionally , you  can also use 'logic and'-&& to render your components when there is no branch of else.
+Just use JavaScript , the **if else** could help you render components conditionally , you can also use 'logic and'-&& to render your components when there is no branch of else.
 
 ## Render the List of Data
 
@@ -87,20 +79,18 @@ Suppose that you have production array like:
 
 ```js
 const products = [
-  { title: 'Cabbage', id: 1 },
-  { title: 'Garlic', id: 2 },
-  { title: 'Apple', id: 3 },
+  { title: "Cabbage", id: 1 },
+  { title: "Garlic", id: 2 },
+  { title: "Apple", id: 3 },
 ];
 ```
 
-In your components,use map function to convert array to list and render  it like this:
+In your components,use map function to convert array to list and render it like this:
 
 ```js
-const listItems = products.map(product =>
-  <li key={product.id}>
-    {product.title}
-  </li>
-);
+const listItems = products.map((product) => (
+  <li key={product.id}>{product.title}</li>
+));
 ```
 
 ## Use State in React（Hook)
@@ -110,9 +100,9 @@ Sometimes you want to storage some message and render it ,like the times of a bu
 When you import the state from react,like this:
 
 ```js
-import { useState } from 'react';
+import { useState } from "react";
 export function StateButton() {
-    const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
 }
 ```
 
@@ -122,7 +112,7 @@ Usually param and the name of which is set to be start with setParam,which is a 
 
 ## What is the so-called Hook function in React?
 
-The function starts with "use xx" is hook function in React,with which you can also write your own hook function . And the state param of each 'Hook component'  is isolated with different components.
+The function starts with "use xx" is hook function in React,with which you can also write your own hook function . And the state param of each 'Hook component' is isolated with different components.
 
 However，most of time,you need to refresh a param at a same time but trigger different components.You can use the 'prop way' to transfer param value to the son's properties.
 
